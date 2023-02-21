@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tripaA">
+            <h2><span>Tripa A</span> {{tripaA.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Ancho</span></dt>
+                <dd>
+                    <span>{{tripaA.ancho}}</span>
+                </dd>
+                <dt><span>Alto</span></dt>
+                <dd>
+                    <span>{{tripaA.alto}}</span>
+                </dd>
+                <dt><span>Color T</span></dt>
+                <dd>
+                    <span>{{tripaA.colorT}}</span>
+                </dd>
+                <dt><span>Color R</span></dt>
+                <dd>
+                    <span>{{tripaA.colorR}}</span>
+                </dd>
+                <dt><span>Numero Pag</span></dt>
+                <dd>
+                    <span>{{tripaA.numeroPag}}</span>
+                </dd>
+                <dt><span>Pelicula</span></dt>
+                <dd>
+                    <div *ngIf="tripaA.pelicula">
+                        <a [routerLink]="['/pelicula', tripaA.pelicula?.id, 'view']">{{tripaA.pelicula?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Plancha</span></dt>
+                <dd>
+                    <div *ngIf="tripaA.plancha">
+                        <a [routerLink]="['/plancha', tripaA.plancha?.id, 'view']">{{tripaA.plancha?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Montaje</span></dt>
+                <dd>
+                    <div *ngIf="tripaA.tipoMontaje">
+                        <a [routerLink]="['/tipo-montaje', tripaA.tipoMontaje?.id, 'view']">{{tripaA.tipoMontaje?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Maquina</span></dt>
+                <dd>
+                    <div *ngIf="tripaA.maquina">
+                        <a [routerLink]="['/maquina', tripaA.maquina?.id, 'view']">{{tripaA.maquina?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Papel</span></dt>
+                <dd>
+                    <div *ngIf="tripaA.tipoPapel">
+                        <a [routerLink]="['/tipo-papel', tripaA.tipoPapel?.id, 'view']">{{tripaA.tipoPapel?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tripa-a', tripaA.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

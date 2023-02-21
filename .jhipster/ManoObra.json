@@ -1,0 +1,53 @@
+{
+    "name": "ManoObra",
+    "fields": [
+        {
+            "fieldName": "turno",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "horas",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dias",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "mes",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "horasExtra",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "libro",
+            "otherEntityName": "libro",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "manoObra"
+        },
+        {
+            "relationshipName": "maquina",
+            "otherEntityName": "maquina",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "manoObra"
+        }
+    ],
+    "changelogDate": "20230219223429",
+    "entityTableName": "mano_obra",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
+}

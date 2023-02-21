@@ -6,6 +6,9 @@ import { JhiEventManager } from 'ng-jhipster';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/user/account.model';
+import { LoginService } from 'app/core/login/login.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'jhi-home',
@@ -17,9 +20,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   authSubscription: Subscription;
   modalRef: NgbModalRef;
 
+  password: string;
+  rememberMe = true;
+  username: string;
+  authenticationError: boolean;
+  alertLoginFailed = '';
+
   constructor(
     private accountService: AccountService,
-    private loginModalService: LoginModalService,
+    private loginService: LoginService,
+    private router: Router,
     private eventManager: JhiEventManager
   ) {}
 
@@ -43,7 +53,29 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   login() {
-    this.modalRef = this.loginModalService.open();
+    this.loginService
+      .login({
+        username: this.username,
+        password: this.password,
+        rememberMe: this.rememberMe
+      })
+      .subscribe(
+        () => {
+          this.authenticationError = false;
+          this.router.navigate(['/cliente/new']);
+
+          this.eventManager.broadcast({
+            name: 'authenticationSuccess',
+            content: 'Sending Authentication Success'
+          });
+
+          this.ngOnInit();
+        },
+        (error: HttpErrorResponse) => {
+          this.alertLoginFailed = 'USUARIO Y/O CONTRASEÑA INCORRECTOS';
+          setTimeout(() => (this.alertLoginFailed = null), 5000);
+        }
+      );
   }
 
   ngOnDestroy() {

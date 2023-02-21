@@ -7,11 +7,17 @@
 Bootstrap tweaks
 ===============================================================*/
 
+html {
+  min-height: 100%;
+  position: relative;
+}
+
 body,
 h1,
 h2,
 h3,
 h4 {
+  color: #767676;
   font-weight: 300;
 }
 
@@ -163,4 +169,57 @@ ui bootstrap tweaks
   white-space: nowrap;
 }
 
+a:not([href]):not([tabindex]):hover,
+a:not([href]):not([tabindex]):focus {
+  // color: ;
+  font-weight: bold;
+  // text-decoration: none;
+}
+
+.nav-link-tabs {
+  border-bottom: 1px solid #cdcdcd;
+}
+
+.form-control {
+  font-size: 0.7rem;
+  color: #818181;
+  padding: 0.375rem 0.4rem;
+}
+
+.form-control-label {
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+label {
+  margin-bottom: 0.25rem;
+}
+
+hr {
+  border-top: 1px solid #cdcdcd;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+.cabeceraTabla {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.cuerpoTabla {
+  font-size: 13px;
+}
+
+.cuerpoTabla td {
+  padding: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: inherit;
+}
+
+.alert {
+  font-size: 10px;
+}
 /* jhipster-needle-scss-add-main JHipster will add new css style */

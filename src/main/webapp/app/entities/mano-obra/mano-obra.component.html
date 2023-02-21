@@ -1,0 +1,78 @@
+<div>
+    <h2 id="page-heading">
+        <span>Mano Obras</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-mano-obra" [routerLink]="['/mano-obra/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Mano Obra
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="manoObras?.length === 0">
+        <span>No manoObras found</span>
+    </div>
+    <div class="table-responsive" *ngIf="manoObras?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Turno</span></th>
+            <th scope="col" ><span>Horas</span></th>
+            <th scope="col" ><span>Dias</span></th>
+            <th scope="col" ><span>Mes</span></th>
+            <th scope="col" ><span>Horas Extras</span></th>
+            <th scope="col" ><span>Libro</span></th>
+            <th scope="col" ><span>Maquina</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let manoObra of manoObras ;trackBy: trackId">
+                <td><a [routerLink]="['/mano-obra', manoObra.id, 'view' ]">{{manoObra.id}}</a></td>
+                <td>{{manoObra.turno}}</td>
+                <td>{{manoObra.horas}}</td>
+                <td>{{manoObra.dias}}</td>
+                <td>{{manoObra.mes}}</td>
+                <td>{{manoObra.horasExtra}}</td>
+                <td>
+                    <div *ngIf="manoObra.libro">
+                        <a [routerLink]="['/libro', manoObra.libro?.id, 'view' ]" >{{manoObra.libro?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="manoObra.maquina">
+                        <a [routerLink]="['/maquina', manoObra.maquina?.id, 'view' ]" >{{manoObra.maquina?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/mano-obra', manoObra.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/mano-obra', manoObra.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/mano-obra', { outlets: { popup: manoObra.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

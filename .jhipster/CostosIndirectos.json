@@ -1,0 +1,37 @@
+{
+    "name": "CostosIndirectos",
+    "fields": [
+        {
+            "fieldName": "cantidad",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "libro",
+            "otherEntityName": "libro",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "costosIndirectos"
+        },
+        {
+            "relationshipName": "extra",
+            "otherEntityName": "extra",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "costosIndirectos"
+        }
+    ],
+    "changelogDate": "20230219223430",
+    "entityTableName": "costos_indirectos",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
+}

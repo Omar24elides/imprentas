@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity TintaTripaB.
+    -->
+    <changeSet id="20230220003519-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="tinta_id"
+                                 baseTableName="tinta_tripab"
+                                 constraintName="fk_tinta_tripab_tinta_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tinta"/>
+
+        <addForeignKeyConstraint baseColumnNames="tripab_id"
+                                 baseTableName="tinta_tripab"
+                                 constraintName="fk_tinta_tripab_tripab_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tripa_b"/>
+
+    </changeSet>
+</databaseChangeLog>

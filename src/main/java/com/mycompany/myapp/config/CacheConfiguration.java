@@ -42,6 +42,27 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.domain.User.class.getName());
             createCache(cm, com.mycompany.myapp.domain.Authority.class.getName());
             createCache(cm, com.mycompany.myapp.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.mycompany.myapp.domain.TipoDocumento.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Cliente.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Libro.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Tinta.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.TipoPapel.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Maquina.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.TipoMontaje.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.TripaA.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.TripaB.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Portada.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.OtroFormato.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.ManoObra.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.CostosIndirectos.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Extras.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Plancha.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Pelicula.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Papel.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.TintaOtroFormato.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.TintaPortada.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.TintaTripaA.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.TintaTripaB.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-3">
         <span class="hipster img-fluid rounded"></span>
     </div>
@@ -12,6 +12,12 @@
                    > You are logged in as user "{{account.login}}". </span>
             </div>
 
+
+
+
+
+
+            
             <div class="alert alert-warning" *ngSwitchCase="false">
                 <span>If you want to </span>
                 <a class="alert-link" (click)="login()">sign in</a><span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
@@ -37,5 +43,39 @@
         <p>
             <span>If you like JHipster, don't forget to give us a star on</span> <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">GitHub</a>!
         </p>
+    </div>
+</div> -->
+
+
+
+<div [ngSwitch]="isAuthenticated()">
+    <div *ngSwitchCase="true" class="row">
+        ESTOY LOGUEADOOO
+    </div>
+
+    <div *ngSwitchCase="false" class="contenedor-fluid abs-center">
+        <div class="row justify-content-center">
+            <form class="form-signin flotante" (ngSubmit)="login()">
+                <div style="text-align: center; color:red; font-weight:800;"> 
+                    <img style="border-radius: 100%"  src="../../content/images/jhipster_family_member_0.svg" width="160px">
+                    
+                    <hr>
+
+                    <h2 class="form-signin-heading" style="color:black">Inicio de sesión</h2>
+
+                    <div class="input-group-sm">
+                        <input type="text" class="form-control" name="nombre_usuario" placeholder="Usuario" [(ngModel)]="username"/>
+                        <input style="margin-top: 8px" type="password" class="form-control" name="clave" placeholder="Contraseña" [(ngModel)]="password"/>
+                        <div *ngIf="alertLoginFailed">
+                            <span class="texr-danger">{{alertLoginFailed}}</span>
+                        </div>
+                    </div>
+
+
+                    <br>
+                    <button class="btn btn-primary btn-block" type="submit">Aceptar</button> 
+                </div>
+            </form>
+        </div>
     </div>
 </div>

@@ -1,0 +1,74 @@
+{
+    "name": "TripaB",
+    "fields": [
+        {
+            "fieldName": "ancho",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "alto",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "colorT",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "colorR",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "numeroPag",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "pelicula",
+            "otherEntityName": "pelicula",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "tripaB"
+        },
+        {
+            "relationshipName": "plancha",
+            "otherEntityName": "plancha",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "tripaB"
+        },
+        {
+            "relationshipName": "tipoMontaje",
+            "otherEntityName": "tipoMontaje",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "tripaB"
+        },
+        {
+            "relationshipName": "maquina",
+            "otherEntityName": "maquina",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "tripaB"
+        },
+        {
+            "relationshipName": "tipoPapel",
+            "otherEntityName": "tipoPapel",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "tripaB"
+        }
+    ],
+    "changelogDate": "20230219223426",
+    "entityTableName": "tripa_b",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
+}

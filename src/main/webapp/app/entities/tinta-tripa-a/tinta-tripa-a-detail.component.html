@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tintaTripaA">
+            <h2><span>Tinta Tripa A</span> {{tintaTripaA.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Tinta</span></dt>
+                <dd>
+                    <div *ngIf="tintaTripaA.tinta">
+                        <a [routerLink]="['/tinta', tintaTripaA.tinta?.id, 'view']">{{tintaTripaA.tinta?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Tripa A</span></dt>
+                <dd>
+                    <div *ngIf="tintaTripaA.tripaA">
+                        <a [routerLink]="['/tripa-a', tintaTripaA.tripaA?.id, 'view']">{{tintaTripaA.tripaA?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tinta-tripa-a', tintaTripaA.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

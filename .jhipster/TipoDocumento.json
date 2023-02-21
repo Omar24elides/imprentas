@@ -1,0 +1,20 @@
+{
+    "name": "TipoDocumento",
+    "fields": [
+        {
+            "fieldName": "tipo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20230219223418",
+    "entityTableName": "tipo_documento",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

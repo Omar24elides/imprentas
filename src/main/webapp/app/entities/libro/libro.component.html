@@ -1,0 +1,88 @@
+<div>
+    <h2 id="page-heading">
+        <span>Libros</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-libro" [routerLink]="['/libro/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Libro
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="libros?.length === 0">
+        <span>No libros found</span>
+    </div>
+    <div class="table-responsive" *ngIf="libros?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Cantidad</span></th>
+            <th scope="col" ><span>Tripa A</span></th>
+            <th scope="col" ><span>Tripa B</span></th>
+            <th scope="col" ><span>Portada</span></th>
+            <th scope="col" ><span>Otro Formato</span></th>
+            <th scope="col" ><span>Cliente</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let libro of libros ;trackBy: trackId">
+                <td><a [routerLink]="['/libro', libro.id, 'view' ]">{{libro.id}}</a></td>
+                <td>{{libro.cantidad}}</td>
+                <td>
+                    <div *ngIf="libro.tripaA">
+                        <a [routerLink]="['/tripa-a', libro.tripaA?.id, 'view' ]" >{{libro.tripaA?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="libro.tripaB">
+                        <a [routerLink]="['/tripa-b', libro.tripaB?.id, 'view' ]" >{{libro.tripaB?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="libro.portada">
+                        <a [routerLink]="['/portada', libro.portada?.id, 'view' ]" >{{libro.portada?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="libro.otroFormato">
+                        <a [routerLink]="['/otro-formato', libro.otroFormato?.id, 'view' ]" >{{libro.otroFormato?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="libro.cliente">
+                        <a [routerLink]="['/cliente', libro.cliente?.id, 'view' ]" >{{libro.cliente?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/libro', libro.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/libro', libro.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/libro', { outlets: { popup: libro.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

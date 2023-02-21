@@ -1,0 +1,94 @@
+<div>
+    <h2 id="page-heading">
+        <span>Otro Formatoes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-otro-formato" [routerLink]="['/otro-formato/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Otro Formato
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="otroFormatoes?.length === 0">
+        <span>No otroFormatoes found</span>
+    </div>
+    <div class="table-responsive" *ngIf="otroFormatoes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Ancho</span></th>
+            <th scope="col" ><span>Alto</span></th>
+            <th scope="col" ><span>Color T</span></th>
+            <th scope="col" ><span>Color R</span></th>
+            <th scope="col" ><span>Pelicula</span></th>
+            <th scope="col" ><span>Tipo Montaje</span></th>
+            <th scope="col" ><span>Maquina</span></th>
+            <th scope="col" ><span>Tipo Papel</span></th>
+            <th scope="col" ><span>Plancha</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let otroFormato of otroFormatoes ;trackBy: trackId">
+                <td><a [routerLink]="['/otro-formato', otroFormato.id, 'view' ]">{{otroFormato.id}}</a></td>
+                <td>{{otroFormato.ancho}}</td>
+                <td>{{otroFormato.alto}}</td>
+                <td>{{otroFormato.colorT}}</td>
+                <td>{{otroFormato.colorR}}</td>
+                <td>
+                    <div *ngIf="otroFormato.pelicula">
+                        <a [routerLink]="['/pelicula', otroFormato.pelicula?.id, 'view' ]" >{{otroFormato.pelicula?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="otroFormato.tipoMontaje">
+                        <a [routerLink]="['/tipo-montaje', otroFormato.tipoMontaje?.id, 'view' ]" >{{otroFormato.tipoMontaje?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="otroFormato.maquina">
+                        <a [routerLink]="['/maquina', otroFormato.maquina?.id, 'view' ]" >{{otroFormato.maquina?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="otroFormato.tipoPapel">
+                        <a [routerLink]="['/tipo-papel', otroFormato.tipoPapel?.id, 'view' ]" >{{otroFormato.tipoPapel?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="otroFormato.plancha">
+                        <a [routerLink]="['/plancha', otroFormato.plancha?.id, 'view' ]" >{{otroFormato.plancha?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/otro-formato', otroFormato.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/otro-formato', otroFormato.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/otro-formato', { outlets: { popup: otroFormato.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

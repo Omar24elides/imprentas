@@ -1,0 +1,70 @@
+{
+    "name": "OtroFormato",
+    "fields": [
+        {
+            "fieldName": "ancho",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "alto",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "colorT",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "colorR",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "pelicula",
+            "otherEntityName": "pelicula",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "otroFormato"
+        },
+        {
+            "relationshipName": "tipoMontaje",
+            "otherEntityName": "tipoMontaje",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "otroFormato"
+        },
+        {
+            "relationshipName": "maquina",
+            "otherEntityName": "maquina",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "otroFormato"
+        },
+        {
+            "relationshipName": "tipoPapel",
+            "otherEntityName": "tipoPapel",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "otroFormato"
+        },
+        {
+            "relationshipName": "plancha",
+            "otherEntityName": "plancha",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "otroFormato"
+        }
+    ],
+    "changelogDate": "20230219223428",
+    "entityTableName": "otro_formato",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
+}

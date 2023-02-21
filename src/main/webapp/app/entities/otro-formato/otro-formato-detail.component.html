@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="otroFormato">
+            <h2><span>Otro Formato</span> {{otroFormato.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Ancho</span></dt>
+                <dd>
+                    <span>{{otroFormato.ancho}}</span>
+                </dd>
+                <dt><span>Alto</span></dt>
+                <dd>
+                    <span>{{otroFormato.alto}}</span>
+                </dd>
+                <dt><span>Color T</span></dt>
+                <dd>
+                    <span>{{otroFormato.colorT}}</span>
+                </dd>
+                <dt><span>Color R</span></dt>
+                <dd>
+                    <span>{{otroFormato.colorR}}</span>
+                </dd>
+                <dt><span>Pelicula</span></dt>
+                <dd>
+                    <div *ngIf="otroFormato.pelicula">
+                        <a [routerLink]="['/pelicula', otroFormato.pelicula?.id, 'view']">{{otroFormato.pelicula?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Montaje</span></dt>
+                <dd>
+                    <div *ngIf="otroFormato.tipoMontaje">
+                        <a [routerLink]="['/tipo-montaje', otroFormato.tipoMontaje?.id, 'view']">{{otroFormato.tipoMontaje?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Maquina</span></dt>
+                <dd>
+                    <div *ngIf="otroFormato.maquina">
+                        <a [routerLink]="['/maquina', otroFormato.maquina?.id, 'view']">{{otroFormato.maquina?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Papel</span></dt>
+                <dd>
+                    <div *ngIf="otroFormato.tipoPapel">
+                        <a [routerLink]="['/tipo-papel', otroFormato.tipoPapel?.id, 'view']">{{otroFormato.tipoPapel?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Plancha</span></dt>
+                <dd>
+                    <div *ngIf="otroFormato.plancha">
+                        <a [routerLink]="['/plancha', otroFormato.plancha?.id, 'view']">{{otroFormato.plancha?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/otro-formato', otroFormato.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

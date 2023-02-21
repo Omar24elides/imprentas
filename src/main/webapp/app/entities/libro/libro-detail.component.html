@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="libro">
+            <h2><span>Libro</span> {{libro.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Cantidad</span></dt>
+                <dd>
+                    <span>{{libro.cantidad}}</span>
+                </dd>
+                <dt><span>Tripa A</span></dt>
+                <dd>
+                    <div *ngIf="libro.tripaA">
+                        <a [routerLink]="['/tripa-a', libro.tripaA?.id, 'view']">{{libro.tripaA?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Tripa B</span></dt>
+                <dd>
+                    <div *ngIf="libro.tripaB">
+                        <a [routerLink]="['/tripa-b', libro.tripaB?.id, 'view']">{{libro.tripaB?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Portada</span></dt>
+                <dd>
+                    <div *ngIf="libro.portada">
+                        <a [routerLink]="['/portada', libro.portada?.id, 'view']">{{libro.portada?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Otro Formato</span></dt>
+                <dd>
+                    <div *ngIf="libro.otroFormato">
+                        <a [routerLink]="['/otro-formato', libro.otroFormato?.id, 'view']">{{libro.otroFormato?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Cliente</span></dt>
+                <dd>
+                    <div *ngIf="libro.cliente">
+                        <a [routerLink]="['/cliente', libro.cliente?.id, 'view']">{{libro.cliente?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/libro', libro.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
