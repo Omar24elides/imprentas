@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="now" value="now()" dbms="mysql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql, mariadb"/>
+    <property name="clobType" value="clob" dbms="h2"/>
+    <property name="clobType" value="clob" dbms="mysql, oracle, mssql, mariadb, postgresql"/>
+    <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223418_added_entity_TipoDocumento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223419_added_entity_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223420_added_entity_Libro.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223421_added_entity_Tinta.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223422_added_entity_TipoPapel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223423_added_entity_Maquina.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223424_added_entity_TipoMontaje.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223425_added_entity_TripaA.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223426_added_entity_TripaB.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223427_added_entity_Portada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223428_added_entity_OtroFormato.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223429_added_entity_ManoObra.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223430_added_entity_CostosIndirectos.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223431_added_entity_Extras.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219230829_added_entity_Plancha.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219231002_added_entity_Pelicula.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230220001833_added_entity_Papel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230220002923_added_entity_TintaOtroFormato.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230220003134_added_entity_TintaPortada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230220003412_added_entity_TintaTripaA.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230220003519_added_entity_TintaTripaB.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20230219223419_added_entity_constraints_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223430_added_entity_constraints_CostosIndirectos.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223420_added_entity_constraints_Libro.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223429_added_entity_constraints_ManoObra.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223428_added_entity_constraints_OtroFormato.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223427_added_entity_constraints_Portada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230220002923_added_entity_constraints_TintaOtroFormato.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230220003134_added_entity_constraints_TintaPortada.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230220003412_added_entity_constraints_TintaTripaA.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230220003519_added_entity_constraints_TintaTripaB.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223425_added_entity_constraints_TripaA.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230219223426_added_entity_constraints_TripaB.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

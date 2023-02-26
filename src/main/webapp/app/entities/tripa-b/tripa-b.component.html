@@ -1,0 +1,96 @@
+<div>
+    <h2 id="page-heading">
+        <span>Tripa BS</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-tripa-b" [routerLink]="['/tripa-b/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Tripa B
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="tripaBS?.length === 0">
+        <span>No tripaBS found</span>
+    </div>
+    <div class="table-responsive" *ngIf="tripaBS?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Ancho</span></th>
+            <th scope="col" ><span>Alto</span></th>
+            <th scope="col" ><span>Color T</span></th>
+            <th scope="col" ><span>Color R</span></th>
+            <th scope="col" ><span>Numero Pag</span></th>
+            <th scope="col" ><span>Pelicula</span></th>
+            <th scope="col" ><span>Plancha</span></th>
+            <th scope="col" ><span>Tipo Montaje</span></th>
+            <th scope="col" ><span>Maquina</span></th>
+            <th scope="col" ><span>Tipo Papel</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let tripaB of tripaBS ;trackBy: trackId">
+                <td><a [routerLink]="['/tripa-b', tripaB.id, 'view' ]">{{tripaB.id}}</a></td>
+                <td>{{tripaB.ancho}}</td>
+                <td>{{tripaB.alto}}</td>
+                <td>{{tripaB.colorT}}</td>
+                <td>{{tripaB.colorR}}</td>
+                <td>{{tripaB.numeroPag}}</td>
+                <td>
+                    <div *ngIf="tripaB.pelicula">
+                        <a [routerLink]="['/pelicula', tripaB.pelicula?.id, 'view' ]" >{{tripaB.pelicula?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="tripaB.plancha">
+                        <a [routerLink]="['/plancha', tripaB.plancha?.id, 'view' ]" >{{tripaB.plancha?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="tripaB.tipoMontaje">
+                        <a [routerLink]="['/tipo-montaje', tripaB.tipoMontaje?.id, 'view' ]" >{{tripaB.tipoMontaje?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="tripaB.maquina">
+                        <a [routerLink]="['/maquina', tripaB.maquina?.id, 'view' ]" >{{tripaB.maquina?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="tripaB.tipoPapel">
+                        <a [routerLink]="['/tipo-papel', tripaB.tipoPapel?.id, 'view' ]" >{{tripaB.tipoPapel?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/tripa-b', tripaB.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/tripa-b', tripaB.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/tripa-b', { outlets: { popup: tripaB.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

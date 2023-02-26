@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Libro.
+    -->
+    <changeSet id="20230219223420-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="tripaa_id"
+                                 baseTableName="libro"
+                                 constraintName="fk_libro_tripaa_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tripa_a"/>
+
+        <addForeignKeyConstraint baseColumnNames="tripab_id"
+                                 baseTableName="libro"
+                                 constraintName="fk_libro_tripab_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tripa_b"/>
+
+        <addForeignKeyConstraint baseColumnNames="portada_id"
+                                 baseTableName="libro"
+                                 constraintName="fk_libro_portada_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="portada"/>
+
+        <addForeignKeyConstraint baseColumnNames="otro_formato_id"
+                                 baseTableName="libro"
+                                 constraintName="fk_libro_otro_formato_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="otro_formato"/>
+
+        <addForeignKeyConstraint baseColumnNames="cliente_id"
+                                 baseTableName="libro"
+                                 constraintName="fk_libro_cliente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cliente"/>
+
+    </changeSet>
+</databaseChangeLog>

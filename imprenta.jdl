@@ -1,0 +1,80 @@
+entity TipoDocumento {
+	tipo String
+}
+
+entity Cliente {
+  email   String 
+  dni     String
+}
+
+entity Libro {
+  cantidad   Integer 
+  dni     String
+}
+
+entity Tinta {
+  nombre String 
+  precio Double
+}
+
+entity TipoPapel {
+  nombre String 
+  precio Double
+}
+
+entity Maquina {
+  nombre   String 
+  precio     Double
+}
+entity TipoMontaje {
+  nombre     String
+}
+
+entity TripaA {
+  ancho   Double
+  alto   Double
+  colorT   Integer
+  colorR   Integer
+  numeroPag   Integer
+}
+
+entity TripaB {
+  ancho   Double
+  alto   Double
+  colorT   Integer
+  colorR   Integer
+  numeroPag   Integer
+}
+
+entity Portada {
+  ancho   Double
+  alto   Double
+  colorT   Integer
+  colorR   Integer
+  lomo   Integer
+  solapa   Integer 
+}
+
+entity OtroFormato {
+  ancho   Double
+  alto   Double
+  colorT   Integer
+  colorR   Integer
+}
+
+entity ManoObra {
+	turno   Integer
+    horas   Integer
+    dias   Integer
+    mes   Integer
+    horasExtra   Integer
+}
+
+entity CostosIndirectos {
+	cantidad   Integer
+}
+
+entity Extras {
+	nombre String
+    precio Double
+}

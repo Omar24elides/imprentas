@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tintaOtroFormato">
+            <h2><span>Tinta Otro Formato</span> {{tintaOtroFormato.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Tinta</span></dt>
+                <dd>
+                    <div *ngIf="tintaOtroFormato.tinta">
+                        <a [routerLink]="['/tinta', tintaOtroFormato.tinta?.id, 'view']">{{tintaOtroFormato.tinta?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Otro Formato</span></dt>
+                <dd>
+                    <div *ngIf="tintaOtroFormato.otroFormato">
+                        <a [routerLink]="['/otro-formto', tintaOtroFormato.otroFormato?.id, 'view']">{{tintaOtroFormato.otroFormato?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tinta-otro-formato', tintaOtroFormato.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="portada">
+            <h2><span>Portada</span> {{portada.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Ancho</span></dt>
+                <dd>
+                    <span>{{portada.ancho}}</span>
+                </dd>
+                <dt><span>Alto</span></dt>
+                <dd>
+                    <span>{{portada.alto}}</span>
+                </dd>
+                <dt><span>Color T</span></dt>
+                <dd>
+                    <span>{{portada.colorT}}</span>
+                </dd>
+                <dt><span>Color R</span></dt>
+                <dd>
+                    <span>{{portada.colorR}}</span>
+                </dd>
+                <dt><span>Lomo</span></dt>
+                <dd>
+                    <span>{{portada.lomo}}</span>
+                </dd>
+                <dt><span>Solapa</span></dt>
+                <dd>
+                    <span>{{portada.solapa}}</span>
+                </dd>
+                <dt><span>Pelicula</span></dt>
+                <dd>
+                    <div *ngIf="portada.pelicula">
+                        <a [routerLink]="['/pelicula', portada.pelicula?.id, 'view']">{{portada.pelicula?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Plancha</span></dt>
+                <dd>
+                    <div *ngIf="portada.plancha">
+                        <a [routerLink]="['/plancha', portada.plancha?.id, 'view']">{{portada.plancha?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Montaje</span></dt>
+                <dd>
+                    <div *ngIf="portada.tipoMontaje">
+                        <a [routerLink]="['/tipo-montaje', portada.tipoMontaje?.id, 'view']">{{portada.tipoMontaje?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Maquina</span></dt>
+                <dd>
+                    <div *ngIf="portada.maquina">
+                        <a [routerLink]="['/maquina', portada.maquina?.id, 'view']">{{portada.maquina?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Tipo Papel</span></dt>
+                <dd>
+                    <div *ngIf="portada.tipoPapel">
+                        <a [routerLink]="['/tipo-papel', portada.tipoPapel?.id, 'view']">{{portada.tipoPapel?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/portada', portada.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

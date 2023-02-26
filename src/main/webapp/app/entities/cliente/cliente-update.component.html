@@ -1,0 +1,1230 @@
+<div class="row justify-content-center">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-3">
+        <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a
+            class="nav-link nav-link-tabs"
+            [ngClass]="{ active: validarTabSeleccionada(1) }"
+            (click)="tabSeleccionada = 1"
+            id="v-pills-link1-tab"
+            role="tab"
+            >CLIENTE</a
+          >
+          <a
+            class="nav-link nav-link-tabs"
+            [ngClass]="{ active: validarTabSeleccionada(2) }"
+            (click)="tabSeleccionada = 2"
+            id="v-pills-link2-tab"
+            role="tab"
+            >TRIPAS</a
+          >
+          <a
+            class="nav-link nav-link-tabs"
+            [ngClass]="{ active: validarTabSeleccionada(3) }"
+            (click)="tabSeleccionada = 3"
+            id="v-pills-link3-tab"
+            role="tab"
+            >PORTADA Y OTROS FORMATO</a
+          >
+          <a
+            class="nav-link nav-link-tabs"
+            [ngClass]="{ active: validarTabSeleccionada(4) }"
+            (click)="tabSeleccionada = 4"
+            id="v-pills-link4-tab"
+            role="tab"
+            >TINTAS</a
+          >
+          <a
+            class="nav-link nav-link-tabs"
+            [ngClass]="{ active: validarTabSeleccionada(5) }"
+            (click)="tabSeleccionada = 5"
+            id="v-pills-link4-tab"
+            role="tab"
+            >MANO DE OBRA</a
+          >
+          <a
+            class="nav-link nav-link-tabs"
+            [ngClass]="{ active: validarTabSeleccionada(6) }"
+            (click)="tabSeleccionada = 6"
+            id="v-pills-link4-tab"
+            role="tab"
+            >COSTOS INDIRECTOS</a
+          >
+          <a
+            class="nav-link nav-link-tabs"
+            [ngClass]="{ active: validarTabSeleccionada(7) }"
+            (click)="tabSeleccionada = 7"
+            id="v-pills-link4-tab"
+            role="tab"
+            >RESUMEN</a
+          >
+        </div>
+      </div>
+
+      <div class="col-9" style="border-left: 1px solid #cdcdcd;">
+        <div class="tab-content" id="v-pills-tabContent">
+          <jhi-alert-error></jhi-alert-error>
+          <div
+            class="tab-pane fade"
+            [ngClass]="{ active: validarTabSeleccionada(1), show: validarTabSeleccionada(1) }"
+            id="v-pills-link1"
+            role="tabpanel"
+          >
+            <form name="editForm" role="form" novalidate [formGroup]="editForm">
+              <h2 style="text-align: center; font-size: 24px; font-weight: bold;">Datos del cliente</h2>
+              <hr width="70%" />
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_tipoDocumento">Tipo Documento</label>
+                    <div class="input-group-append">
+                      <select
+                        style="width: 130px;"
+                        class="form-control"
+                        id="field_tipoDocumento"
+                        name="tipoDocumento"
+                        formControlName="tipoDocumento"
+                      >
+                        <option [ngValue]="null"></option>
+                        <option
+                          [ngValue]="
+                            tipoDocumentoOption.id === editForm.get('tipoDocumento').value?.id
+                              ? editForm.get('tipoDocumento').value
+                              : tipoDocumentoOption
+                          "
+                          *ngFor="let tipoDocumentoOption of tipodocumentos; trackBy: trackTipoDocumentoById"
+                          >{{ tipoDocumentoOption.tipo }}</option
+                        >
+                      </select>
+                      <input type="text" class="form-control" name="dni" id="field_dni" formControlName="dni" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_email">Email</label>
+                    <input type="email" class="form-control" name="email" id="field_email" formControlName="email" />
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_ejemplres">Ejemplares</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="ejemplres"
+                      id="field_ejemplres"
+                      min="0"
+                      [(ngModel)]="libro.cantidad"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <button
+                  type="button"
+                  (click)="guardarCliente()"
+                  id="save-entity"
+                  [disabled]="editForm.invalid || isSaving"
+                  class="btn btn-primary"
+                >
+                  <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Siguiente</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            [ngClass]="{ active: validarTabSeleccionada(2), show: validarTabSeleccionada(2) }"
+            id="v-pills-link2"
+            role="tabpanel"
+          >
+            <div>
+              <h2 style="text-align: center; font-size: 24px; font-weight: bold;">Tripas</h2>
+              <hr width="70%" />
+              <div class="row">
+                <div class="col-6">
+                  <h2 style="text-align: center; font-size: 18px; font-weight: bold;">Tripa A</h2>
+                  <hr width="50%" />
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_ancho">Ancho</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="ancho"
+                          id="field_ancho"
+                          min="0"
+                          max="50"
+                          [(ngModel)]="tripaA.ancho"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_colorT">Color T</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="colorT"
+                          id="field_colorT"
+                          min="0"
+                          max="5"
+                          [(ngModel)]="tripaA.colorT"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_numeroPag">Numero Pag</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="numeroPag"
+                          id="field_numeroPag"
+                          min="0"
+                          [(ngModel)]="tripaA.numeroPag"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_alto">Alto</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="alto"
+                          id="field_alto"
+                          min="0"
+                          max="50"
+                          [(ngModel)]="tripaA.alto"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_colorR">Color R</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="colorR"
+                          id="field_colorR"
+                          min="0"
+                          max="50"
+                          [(ngModel)]="tripaA.colorR"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr />
+
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_tipoMontaje">Tipo Montaje</label>
+                    <select
+                      class="form-control"
+                      id="field_tipoMontaje"
+                      name="tipoMontaje"
+                      [(ngModel)]="tripaA.tipoMontaje"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="tipoMontajeOption.id === tripaA.tipoMontaje?.id ? tripaA.tipoMontaje : tipoMontajeOption"
+                        *ngFor="let tipoMontajeOption of tipomontajes"
+                        >{{ tipoMontajeOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_tipoPapel">Tipo Papel</label>
+                    <select
+                      class="form-control"
+                      id="field_tipoPapel"
+                      name="tipoPapel"
+                      [(ngModel)]="tripaA.tipoPapel"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="tipoPapelOption.id === tripaA.tipoPapel?.id ? tripaA.tipoPapel : tipoPapelOption"
+                        *ngFor="let tipoPapelOption of tipopapels; trackBy: trackTipoPapelById"
+                        >{{ tipoPapelOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_maquina">Maquina</label>
+                    <select
+                      class="form-control"
+                      id="field_maquina"
+                      name="maquina"
+                      [(ngModel)]="tripaA.maquina"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="maquinaOption.id === tripaA.maquina?.id ? tripaA.maquina : maquinaOption"
+                        *ngFor="let maquinaOption of maquinas"
+                        >{{ maquinaOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_plancha">Plancha</label>
+                    <select
+                      class="form-control"
+                      id="field_plancha"
+                      name="plancha"
+                      [(ngModel)]="tripaA.plancha"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="planchaOption.id === tripaA.plancha?.id ? tripaA.plancha : planchaOption"
+                        *ngFor="let planchaOption of planchas"
+                        >{{ planchaOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-6" style="border-left: 1px solid #cdcdcd;">
+                  <h2 style="text-align: center; font-size: 18px; font-weight: bold;">Tripa B</h2>
+                  <hr width="50%" />
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_ancho_b">Ancho</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="ancho_b"
+                          id="field_ancho_b"
+                          min="0"
+                          max="50"
+                          [(ngModel)]="tripaB.ancho"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_colorT_b">Color T</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="colorT_b"
+                          id="field_colorT_b"
+                          min="0"
+                          max="5"
+                          [(ngModel)]="tripaB.colorT"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_numeroPag_b">Numero Pag</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="numeroPag_b"
+                          id="field_numeroPag_b"
+                          min="0"
+                          [(ngModel)]="tripaB.numeroPag"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_alto_b">Alto</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="alto_b"
+                          id="field_alto_b"
+                          min="0"
+                          max="50"
+                          [(ngModel)]="tripaB.alto"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_colorR_b">Color R</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="colorR_b"
+                          id="field_colorR_b"
+                          min="0"
+                          max="5"
+                          [(ngModel)]="tripaB.colorR"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr />
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_tipoMontaje_b">Tipo Montaje</label>
+                    <select
+                      class="form-control"
+                      id="field_tipoMontaje_b"
+                      name="tipoMontaje_b"
+                      [(ngModel)]="tripaB.tipoMontaje"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="tipoMontajeOption.id === tripaB.tipoMontaje?.id ? tripaB.tipoMontaje : tipoMontajeOption"
+                        *ngFor="let tipoMontajeOption of tipomontajes"
+                        >{{ tipoMontajeOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_tipoPapel_b">Tipo Papel</label>
+                    <select
+                      class="form-control"
+                      id="field_tipoPapel_b"
+                      name="tipoPapel_b"
+                      [(ngModel)]="tripaB.tipoPapel"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="tipoPapelOption.id === tripaB.tipoPapel?.id ? tripaB.tipoPapel : tipoPapelOption"
+                        *ngFor="let tipoPapelOption of tipopapels; trackBy: trackTipoPapelById"
+                        >{{ tipoPapelOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_maquina_b">Maquina</label>
+                    <select
+                      class="form-control"
+                      id="field_maquina_b"
+                      name="maquina_b"
+                      [(ngModel)]="tripaB.maquina"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="maquinaOption.id === tripaB.maquina?.id ? tripaB.maquina : maquinaOption"
+                        *ngFor="let maquinaOption of maquinas"
+                        >{{ maquinaOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_plancha_b">Plancha</label>
+                    <select
+                      class="form-control"
+                      id="field_plancha_b"
+                      name="plancha_b"
+                      [(ngModel)]="tripaB.plancha"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="planchaOption.id === tripaB.plancha?.id ? tripaB.plancha : planchaOption"
+                        *ngFor="let planchaOption of planchas"
+                        >{{ planchaOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button type="button" (click)="guardarTripas()" id="save-entity" class="btn btn-primary">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Siguiente</span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            [ngClass]="{ active: validarTabSeleccionada(3), show: validarTabSeleccionada(3) }"
+            id="v-pills-link3"
+            role="tabpanel"
+          >
+            <div>
+              <h2 style="text-align: center; font-size: 24px; font-weight: bold;">Portada y Otros formatos</h2>
+              <hr width="70%" />
+              <div class="row">
+                <div class="col-6">
+                  <h2 style="text-align: center; font-size: 18px; font-weight: bold;">Portada</h2>
+                  <hr width="50%" />
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_ancho_p">Ancho</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="ancho_p"
+                          id="field_ancho_p"
+                          min="0"
+                          max="50"
+                          [(ngModel)]="portada.ancho"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_colorT_p">Color T</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="colorT_p"
+                          id="field_colorT_p"
+                          min="0"
+                          max="5"
+                          [(ngModel)]="portada.colorT"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_lomo">Lomo</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="lomo"
+                          id="field_lomo"
+                          min="0"
+                          max="5"
+                          [(ngModel)]="portada.lomo"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_alto_p">Alto</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="alto_p"
+                          id="field_alto_p"
+                          min="0"
+                          max="50"
+                          [(ngModel)]="portada.alto"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_colorR_p">Color R</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="colorR_p"
+                          id="field_colorR_p"
+                          min="0"
+                          max="5"
+                          [(ngModel)]="portada.colorR"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_solapa">Solapa</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="lomo"
+                          id="field_solapa"
+                          min="0"
+                          max="50"
+                          [(ngModel)]="portada.solapa"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr />
+
+                  <!-- <div class="row"> -->
+                  <!-- <div class="col-6"> -->
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_tipoMontaje_p">Tipo Montaje</label>
+                    <select
+                      class="form-control"
+                      id="field_tipoMontaje_p"
+                      name="tipoMontaje_p"
+                      [(ngModel)]="portada.tipoMontaje"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="tipoMontajeOption.id === portada.tipoMontaje?.id ? portada.tipoMontaje : tipoMontajeOption"
+                        *ngFor="let tipoMontajeOption of tipomontajes"
+                        >{{ tipoMontajeOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_tipoPapel_p">Tipo Papel</label>
+                    <select
+                      class="form-control"
+                      id="field_tipoPapel_p"
+                      name="tipoPapel_p"
+                      [(ngModel)]="portada.tipoPapel"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="tipoPapelOption.id === portada.tipoPapel?.id ? portada.tipoPapel : tipoPapelOption"
+                        *ngFor="let tipoPapelOption of tipopapels; trackBy: trackTipoPapelById"
+                        >{{ tipoPapelOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                  <!-- </div> -->
+
+                  <!-- <div class="col-6"> -->
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_maquina_p">Maquina</label>
+                    <select
+                      class="form-control"
+                      id="field_maquina_p"
+                      name="maquina_p"
+                      [(ngModel)]="portada.maquina"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="maquinaOption.id === portada.maquina?.id ? portada.maquina : maquinaOption"
+                        *ngFor="let maquinaOption of maquinas"
+                        >{{ maquinaOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_plancha_p">Plancha</label>
+                    <select
+                      class="form-control"
+                      id="field_plancha_p"
+                      name="plancha_p"
+                      [(ngModel)]="portada.plancha"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="planchaOption.id === portada.plancha?.id ? portada.plancha : planchaOption"
+                        *ngFor="let planchaOption of planchas"
+                        >{{ planchaOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-6" style="border-left: 1px solid #cdcdcd;">
+                  <h2 style="text-align: center; font-size: 18px; font-weight: bold;">Otros formatos</h2>
+                  <hr width="50%" />
+
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_ancho_of">Ancho</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="ancho_of"
+                          id="field_ancho_of"
+                          min="0"
+                          max="50"
+                          [(ngModel)]="otroFormato.ancho"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_colorT_of">Color T</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="colorT_of"
+                          id="field_colorT_of"
+                          min="0"
+                          max="5"
+                          [(ngModel)]="otroFormato.colorT"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_alto_of">Alto</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="alto_of"
+                          id="field_alto_of"
+                          min="0"
+                          max="50"
+                          [(ngModel)]="otroFormato.alto"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+
+                      <div class="form-group">
+                        <label class="form-control-label" for="field_colorR_of">Color R</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          name="colorR_of"
+                          id="field_colorR_of"
+                          min="0"
+                          max="5"
+                          [(ngModel)]="otroFormato.colorR"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr />
+
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_tipoMontaje_of">Tipo Montaje</label>
+                    <select
+                      class="form-control"
+                      id="field_tipoMontaje_of"
+                      name="tipoMontaje_of"
+                      [(ngModel)]="otroFormato.tipoMontaje"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="tipoMontajeOption.id === otroFormato.tipoMontaje?.id ? otroFormato.tipoMontaje : tipoMontajeOption"
+                        *ngFor="let tipoMontajeOption of tipomontajes"
+                        >{{ tipoMontajeOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_tipoPapel_of">Tipo Papel</label>
+                    <select
+                      class="form-control"
+                      id="field_tipoPapel_of"
+                      name="tipoPapel_of"
+                      [(ngModel)]="otroFormato.tipoPapel"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="tipoPapelOption.id === otroFormato.tipoPapel?.id ? otroFormato.tipoPapel : tipoPapelOption"
+                        *ngFor="let tipoPapelOption of tipopapels; trackBy: trackTipoPapelById"
+                        >{{ tipoPapelOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_maquina_of">Maquina</label>
+                    <select
+                      class="form-control"
+                      id="field_maquina_of"
+                      name="maquina_of"
+                      [(ngModel)]="otroFormato.maquina"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="maquinaOption.id === otroFormato.maquina?.id ? otroFormato.maquina : maquinaOption"
+                        *ngFor="let maquinaOption of maquinas"
+                        >{{ maquinaOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="field_plancha_of">Plancha</label>
+                    <select
+                      class="form-control"
+                      id="field_plancha_of"
+                      name="plancha_of"
+                      [(ngModel)]="otroFormato.plancha"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option
+                        [ngValue]="planchaOption.id === otroFormato.plancha?.id ? otroFormato.plancha : planchaOption"
+                        *ngFor="let planchaOption of planchas"
+                        >{{ planchaOption.nombre }}</option
+                      >
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button type="button" (click)="guardarPortadaYOtroFormto()" id="save-entity" class="btn btn-primary">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Siguiente</span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            [ngClass]="{ active: validarTabSeleccionada(4), show: validarTabSeleccionada(4) }"
+            id="v-pills-link4"
+            role="tabpanel"
+          >
+            <div>
+              <h2 style="text-align: center; font-size: 24px; font-weight: bold;">Tintas</h2>
+              <hr width="70%" />
+
+              <div class="row" style="border-bottom: 1px solid #cdcdcd;">
+                <div class="col-6">
+                  <h2 style="text-align: center; font-size: 18px; font-weight: bold;">Tinta - Tripa A</h2>
+                  <hr width="50%" />
+
+                  <div class="row">
+                    <div class="col-6">
+                      <label class="form-control-label">Seleccione las tintas necesrias:</label>
+                      <div class="table-responsive" *ngIf="tintas?.length > 0">
+                        <table class="table table-hover table-bordered">
+                          <thead class="cabeceraTabla">
+                            <tr>
+                              <th scope="col"><span>Tinta</span></th>
+                              <th scope="col"></th>
+                            </tr>
+                          </thead>
+                          <tbody class="cuerpoTabla">
+                            <tr *ngFor="let tinta of tintas">
+                              <td>{{ tinta.nombre }}</td>
+
+                              <td class="text-center">
+                                <button
+                                  type="button"
+                                  title="SELECCIONAR"
+                                  (click)="agregarTintaTripaA(tinta)"
+                                  class="btn btn-success btn-sm"
+                                >
+                                  <fa-icon [icon]="'plus'"></fa-icon>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <label class="form-control-label">Tintas Seleccionadas</label>
+                      <div class="alert alert-warning" *ngIf="tintasTripaA?.length === 0">
+                        <span>NO HA SELECCIONADO NINGUNA TINTA PARA TRIPA A</span>
+                      </div>
+
+                      <div class="table-responsive" *ngIf="tintasTripaA?.length > 0">
+                        <table class="table table-hover table-bordered">
+                          <thead class="cabeceraTabla">
+                            <tr>
+                              <th scope="col"><span>Tinta</span></th>
+                            </tr>
+                          </thead>
+                          <tbody class="cuerpoTabla">
+                            <tr *ngFor="let tintaTripaA of tintasTripaA">
+                              <td>{{ tintaTripaA.tinta.nombre }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6" style="border-left: 1px solid #cdcdcd;">
+                  <h2 style="text-align: center; font-size: 18px; font-weight: bold;">Tinta - Tripa B</h2>
+                  <hr width="50%" />
+
+                  <div class="row">
+                    <div class="col-6">
+                      <label class="form-control-label">Seleccione las tintas necesrias:</label>
+                      <div class="table-responsive" *ngIf="tintas?.length > 0">
+                        <table class="table table-hover table-bordered">
+                          <thead class="cabeceraTabla">
+                            <tr>
+                              <th scope="col"><span>Tinta</span></th>
+                              <th scope="col"></th>
+                            </tr>
+                          </thead>
+                          <tbody class="cuerpoTabla">
+                            <tr *ngFor="let tinta of tintas">
+                              <td>{{ tinta.nombre }}</td>
+
+                              <td class="text-center">
+                                <button
+                                  type="button"
+                                  title="SELECCIONAR"
+                                  (click)="agregarTintaTripaB(tinta)"
+                                  class="btn btn-success btn-sm"
+                                >
+                                  <fa-icon [icon]="'plus'"></fa-icon>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <label class="form-control-label">Tintas Seleccionadas</label>
+                      <div class="alert alert-warning" *ngIf="tintasTripaB?.length === 0">
+                        <span>NO HA SELECCIONADO NINGUNA TINTA PARA TRIPA B</span>
+                      </div>
+
+                      <div class="table-responsive" *ngIf="tintasTripaB?.length > 0">
+                        <table class="table table-hover table-bordered">
+                          <thead class="cabeceraTabla">
+                            <tr>
+                              <th scope="col"><span>Tinta</span></th>
+                            </tr>
+                          </thead>
+                          <tbody class="cuerpoTabla">
+                            <tr *ngFor="let tintaTripaB of tintasTripaB">
+                              <td>{{ tintaTripaB.tinta.nombre }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 15px;">
+                <div class="col-6">
+                  <h2 style="text-align: center; font-size: 18px; font-weight: bold;">Tinta - Portada</h2>
+                  <hr width="50%" />
+
+                  <div class="row">
+                    <div class="col-6">
+                      <label class="form-control-label">Seleccione las tintas necesrias:</label>
+                      <div class="table-responsive" *ngIf="tintas?.length > 0">
+                        <table class="table table-hover table-bordered">
+                          <thead class="cabeceraTabla">
+                            <tr>
+                              <th scope="col"><span>Tinta</span></th>
+                              <th scope="col"></th>
+                            </tr>
+                          </thead>
+                          <tbody class="cuerpoTabla">
+                            <tr *ngFor="let tinta of tintas">
+                              <td>{{ tinta.nombre }}</td>
+
+                              <td class="text-center">
+                                <button
+                                  type="button"
+                                  title="SELECCIONAR"
+                                  (click)="agregarTintaPortada(tinta)"
+                                  class="btn btn-success btn-sm"
+                                >
+                                  <fa-icon [icon]="'plus'"></fa-icon>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <label class="form-control-label">Tintas Seleccionadas</label>
+                      <div class="alert alert-warning" *ngIf="tintasPortada?.length === 0">
+                        <span>NO HA SELECCIONADO NINGUNA TINTA PARA PORTADA</span>
+                      </div>
+
+                      <div class="table-responsive" *ngIf="tintasPortada?.length > 0">
+                        <table class="table table-hover table-bordered">
+                          <thead class="cabeceraTabla">
+                            <tr>
+                              <th scope="col"><span>Tinta</span></th>
+                            </tr>
+                          </thead>
+                          <tbody class="cuerpoTabla">
+                            <tr *ngFor="let tintaPortada of tintasPortada">
+                              <td>{{ tintaPortada.tinta.nombre }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6" style="border-left: 1px solid #cdcdcd;">
+                  <h2 style="text-align: center; font-size: 18px; font-weight: bold;">Tinta - Otro formato</h2>
+                  <hr width="50%" />
+
+                  <div class="row">
+                    <div class="col-6">
+                      <label class="form-control-label">Seleccione las tintas necesrias:</label>
+                      <div class="table-responsive" *ngIf="tintas?.length > 0">
+                        <table class="table table-hover table-bordered">
+                          <thead class="cabeceraTabla">
+                            <tr>
+                              <th scope="col"><span>Tinta</span></th>
+                              <th scope="col"></th>
+                            </tr>
+                          </thead>
+                          <tbody class="cuerpoTabla">
+                            <tr *ngFor="let tinta of tintas">
+                              <td>{{ tinta.nombre }}</td>
+
+                              <td class="text-center">
+                                <button
+                                  type="button"
+                                  title="SELECCIONAR"
+                                  (click)="agregarTintaOtroFormato(tinta)"
+                                  class="btn btn-success btn-sm"
+                                >
+                                  <fa-icon [icon]="'plus'"></fa-icon>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <label class="form-control-label">Tintas Seleccionadas</label>
+                      <div class="alert alert-warning" *ngIf="tintasOtroFormato?.length === 0">
+                        <span>NO HA SELECCIONADO NINGUNA TINTA PARA OTRO FORMATO</span>
+                      </div>
+
+                      <div class="table-responsive" *ngIf="tintasOtroFormato?.length > 0">
+                        <table class="table table-hover table-bordered">
+                          <thead class="cabeceraTabla">
+                            <tr>
+                              <th scope="col"><span>Tinta</span></th>
+                            </tr>
+                          </thead>
+                          <tbody class="cuerpoTabla">
+                            <tr *ngFor="let tintaOtroFormato of tintasOtroFormato">
+                              <td>{{ tintaOtroFormato.tinta.nombre }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <button type="button" (click)="guardarTintas()" id="save-entity" class="btn btn-primary">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Siguiente</span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            [ngClass]="{ active: validarTabSeleccionada(5), show: validarTabSeleccionada(5) }"
+            id="v-pills-link5"
+            role="tabpanel"
+          >
+            <h2 style="text-align: center; font-size: 24px; font-weight: bold;">Mano Obra</h2>
+            <hr width="70%" />
+            <div *ngFor="let manoObra of manoObras" style="display: inline-block; margin: 14px;">
+              <h2 style="text-align: center; font-size: 18px; font-weight: bold;">{{ manoObra.maquina.nombre }}</h2>
+              <hr width="50%" />
+
+              <div class="form-group">
+                <label class="form-control-label" for="field_turno">Turno</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="turno"
+                  id="field_turno"
+                  min="0"
+                  max="2"
+                  [(ngModel)]="manoObra.turno"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="field_horas">Horas</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="horas"
+                  id="field_horas"
+                  min="0"
+                  max="24"
+                  [(ngModel)]="manoObra.horas"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="field_dias">Dias</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="dias"
+                  id="field_dias"
+                  min="0"
+                  max="31"
+                  [(ngModel)]="manoObra.dias"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="field_mes">Mes</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="mes"
+                  id="field_mes"
+                  min="0"
+                  max="12"
+                  [(ngModel)]="manoObra.mes"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="field_horasExtra">Horas Extra</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="horasExtra"
+                  id="field_horasExtra"
+                  min="0"
+                  max="12"
+                  [(ngModel)]="manoObra.horasExtra"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </div>
+            </div>
+            <div>
+              <button type="button" (click)="guardarManoObra()" id="save-entity" class="btn btn-primary">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Siguiente</span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            [ngClass]="{ active: validarTabSeleccionada(6), show: validarTabSeleccionada(6) }"
+            id="v-pills-link5"
+            role="tabpanel"
+          >
+            <h2 style="text-align: center; font-size: 24px; font-weight: bold;">Costos Indirectos</h2>
+            <hr width="70%" />
+
+            <div>
+              <table class="table table-hover table-bordered">
+                <thead class="cabeceraTabla">
+                  <tr>
+                    <th scope="col"><span>Extra</span></th>
+                    <th scope="col"><span>Cant</span></th>
+                  </tr>
+                </thead>
+                <tbody class="cuerpoTabla">
+                  <tr *ngFor="let costoIndirecto of costosIndirecto">
+                    <td>{{ costoIndirecto.extra.nombre }}</td>
+
+                    <td>
+                      <div class="form-group">
+                        <input
+                          type="number"
+                          class="form-control"
+                          [(ngModel)]="costoIndirecto.cantidad"
+                          [ngModelOptions]="{ standalone: true }"
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div>
+              <button type="button" (click)="guardarCostosIndrectos()" id="save-entity" class="btn btn-primary">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Procesar Resumen</span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            [ngClass]="{ active: validarTabSeleccionada(7), show: validarTabSeleccionada(7) }"
+            id="v-pills-link5"
+            role="tabpanel"
+          >
+            <h2 style="text-align: center; font-size: 24px; font-weight: bold;">Resumen</h2>
+            <hr width="70%" />
+
+            <div id="pdfTotal">
+              <table class="table table-hover table-bordered">
+                <thead class="cabeceraTabla">
+                  <tr>
+                    <th scope="col"><span>Tripa A</span></th>
+                    <th scope="col"><span>Tripa B</span></th>
+                    <th scope="col"><span>Portada</span></th>
+                    <th scope="col"><span>Otro Formato</span></th>
+
+                    <th scope="col"><span>Tinta Tripa A</span></th>
+                    <th scope="col"><span>Tinta Tripa B</span></th>
+                    <th scope="col"><span>Tinta Portada</span></th>
+                    <th scope="col"><span>Tinta Otro Formato</span></th>
+
+                    <th scope="col"><span>Mano de obra</span></th>
+                    <th scope="col"><span>Costos indirectos</span></th>
+
+                    <th scope="col"><span>Total</span></th>
+                  </tr>
+                </thead>
+                <tbody class="cuerpoTabla">
+                  <tr>
+                    <td>{{ totalTripaA | number: '1.1-2' }}</td>
+                    <td>{{ totalTripaB | number: '1.1-2' }}</td>
+                    <td>{{ totalPortada | number: '1.1-2' }}</td>
+                    <td>{{ totalOtroFormato | number: '1.1-2' }}</td>
+                    <td>{{ totalTintaTripaA | number: '1.1-2' }}</td>
+                    <td>{{ totalTintaTripaB | number: '1.1-2' }}</td>
+                    <td>{{ totalTintaPortada | number: '1.1-2' }}</td>
+                    <td>{{ totalTintaOtroFormto | number: '1.1-2' }}</td>
+                    <td>{{ totalManoObra | number: '1.1-2' }}</td>
+                    <td>{{ totalCostosIndirecto | number: '1.1-2' }}</td>
+
+                    <td>
+                      {{
+                        totalTripaA +
+                          totalTripaB +
+                          totalPortada +
+                          totalOtroFormato +
+                          totalTintaTripaA +
+                          totalTintaTripaB +
+                          totalTintaPortada +
+                          totalTintaOtroFormto +
+                          totalManoObra +
+                          totalCostosIndirecto | number: '1.1-2'
+                      }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

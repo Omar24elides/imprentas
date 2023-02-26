@@ -1,0 +1,58 @@
+{
+    "name": "Libro",
+    "fields": [
+        {
+            "fieldName": "cantidad",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "tripaA",
+            "otherEntityName": "tripaA",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "libro"
+        },
+        {
+            "relationshipName": "tripaB",
+            "otherEntityName": "tripaB",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "libro"
+        },
+        {
+            "relationshipName": "portada",
+            "otherEntityName": "portada",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "libro"
+        },
+        {
+            "relationshipName": "otroFormato",
+            "otherEntityName": "otroFormato",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "libro"
+        },
+        {
+            "relationshipName": "cliente",
+            "otherEntityName": "cliente",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "libro"
+        }
+    ],
+    "changelogDate": "20230219223420",
+    "entityTableName": "libro",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
+}

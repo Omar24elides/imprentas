@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-libro-heading">Create or edit a Libro</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cantidad">Cantidad</label>
+                    <input type="number" class="form-control" name="cantidad" id="field_cantidad"
+                           formControlName="cantidad"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tripaA">Tripa A</label>
+                    <select class="form-control" id="field_tripaA" name="tripaA" formControlName="tripaA">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tripaAOption.id === editForm.get('tripaA').value?.id ? editForm.get('tripaA').value : tripaAOption" *ngFor="let tripaAOption of tripaas; trackBy: trackTripaAById">{{tripaAOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tripaB">Tripa B</label>
+                    <select class="form-control" id="field_tripaB" name="tripaB" formControlName="tripaB">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tripaBOption.id === editForm.get('tripaB').value?.id ? editForm.get('tripaB').value : tripaBOption" *ngFor="let tripaBOption of tripabs; trackBy: trackTripaBById">{{tripaBOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_portada">Portada</label>
+                    <select class="form-control" id="field_portada" name="portada" formControlName="portada">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="portadaOption.id === editForm.get('portada').value?.id ? editForm.get('portada').value : portadaOption" *ngFor="let portadaOption of portadas; trackBy: trackPortadaById">{{portadaOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_otroFormato">Otro Formato</label>
+                    <select class="form-control" id="field_otroFormato" name="otroFormato" formControlName="otroFormato">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="otroFormatoOption.id === editForm.get('otroFormato').value?.id ? editForm.get('otroFormato').value : otroFormatoOption" *ngFor="let otroFormatoOption of otroformatoes; trackBy: trackOtroFormatoById">{{otroFormatoOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cliente">Cliente</label>
+                    <select class="form-control" id="field_cliente" name="cliente" formControlName="cliente">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="clienteOption.id === editForm.get('cliente').value?.id ? editForm.get('cliente').value : clienteOption" *ngFor="let clienteOption of clientes; trackBy: trackClienteById">{{clienteOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity OtroFormato.
+    -->
+    <changeSet id="20230219223428-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="pelicula_id"
+                                 baseTableName="otro_formato"
+                                 constraintName="fk_otro_formato_pelicula_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pelicula"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipo_montaje_id"
+                                 baseTableName="otro_formato"
+                                 constraintName="fk_otro_formato_tipo_montaje_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_montaje"/>
+
+        <addForeignKeyConstraint baseColumnNames="maquina_id"
+                                 baseTableName="otro_formato"
+                                 constraintName="fk_otro_formato_maquina_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="maquina"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipo_papel_id"
+                                 baseTableName="otro_formato"
+                                 constraintName="fk_otro_formato_tipo_papel_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_papel"/>
+
+        <addForeignKeyConstraint baseColumnNames="plancha_id"
+                                 baseTableName="otro_formato"
+                                 constraintName="fk_otro_formato_plancha_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="plancha"/>
+
+    </changeSet>
+</databaseChangeLog>
