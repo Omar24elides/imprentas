@@ -97,7 +97,7 @@
                           >{{ tipoDocumentoOption.tipo }}</option
                         >
                       </select>
-                      <input type="text" class="form-control" name="dni" id="field_dni" formControlName="dni" />
+                      <input type="number" min="0" class="form-control" name="dni" id="field_dni" formControlName="dni" />
                     </div>
                   </div>
                 </div>
@@ -1146,6 +1146,8 @@
                       <div class="form-group">
                         <input
                           type="number"
+                          min="0"
+                          max="100"
                           class="form-control"
                           [(ngModel)]="costoIndirecto.cantidad"
                           [ngModelOptions]="{ standalone: true }"
