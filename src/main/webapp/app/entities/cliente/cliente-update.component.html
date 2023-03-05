@@ -1174,7 +1174,7 @@
           >
             <h2 style="text-align: center; font-size: 24px; font-weight: bold;">Resumen</h2>
             <hr width="70%" />
-
+            <h2 style="text-align: end; font-size: 18px;">Para {{ libro.cantidad }} libro(s)</h2>
             <div id="pdfTotal">
               <table class="table table-hover table-bordered">
                 <thead class="cabeceraTabla">
@@ -1183,15 +1183,12 @@
                     <th scope="col"><span>Tripa B</span></th>
                     <th scope="col"><span>Portada</span></th>
                     <th scope="col"><span>Otro Formato</span></th>
-
                     <th scope="col"><span>Tinta Tripa A</span></th>
                     <th scope="col"><span>Tinta Tripa B</span></th>
                     <th scope="col"><span>Tinta Portada</span></th>
                     <th scope="col"><span>Tinta Otro Formato</span></th>
-
                     <th scope="col"><span>Mano de obra</span></th>
                     <th scope="col"><span>Costos indirectos</span></th>
-
                     <th scope="col"><span>Total</span></th>
                   </tr>
                 </thead>
@@ -1207,7 +1204,6 @@
                     <td>{{ totalTintaOtroFormto | number: '1.1-2' }}</td>
                     <td>{{ totalManoObra | number: '1.1-2' }}</td>
                     <td>{{ totalCostosIndirecto | number: '1.1-2' }}</td>
-
                     <td>
                       {{
                         totalTripaA +
@@ -1225,6 +1221,16 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+
+            <div>
+              <button type="button" (click)="refresh()" class="btn" style="border: 2px solid #E95420; color: #E95420;">
+                <fa-icon [icon]="'home'"></fa-icon>&nbsp;<span>Presupuesto nuevo</span>
+              </button>
+
+              <button type="button" (click)="openPDF()" class="btn" style="border: 2px solid #c70000; color: #c70000;">
+                <fa-icon [icon]="'file-pdf'"></fa-icon>&nbsp;<span>PDF</span>
+              </button>
             </div>
           </div>
         </div>

@@ -47,15 +47,13 @@
 </div> -->
 
 <div [ngSwitch]="isAuthenticated()">
-  <div *ngSwitchCase="true" class="row">
-    ESTOY LOGUEADO
-  </div>
+  <div *ngSwitchCase="true" class="row"></div>
 
-  <div *ngSwitchCase="false" class="contenedor-fluid abs-center">
+  <div *ngSwitchCase="false" style="margin-top: 150px" class="contenedor-fluid abs-center">
     <div class="row justify-content-center">
       <form class="form-signin flotante" (ngSubmit)="login()">
         <div style="text-align: center; color:red; font-weight:800;">
-          <img src="https://imprentadelacultura.files.wordpress.com/2015/04/logo-imprenta.png" width="160px" />
+          <img src="./logo-imprenta.png" width="160px" />
 
           <hr />
 
